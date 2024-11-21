@@ -5,6 +5,21 @@
   <!-- Created using Storyline 360 x64 - http://www.articulate.com  -->
   <!-- version: 3.93.33359.0 -->
   <title>testing page</title>
+    <script>
+      window.addEventListener('message', function(event) {
+        // Ensure the message comes from a trusted origin
+        if (event.origin !== 'http://localhost:58641') {
+          return;  // Ignore messages from untrusted origins
+        }
+
+        // Handle the message, assuming it contains userId
+        const data = event.data;
+        if (data && data.userId) {
+          window.userId = data.userId;  // Set userId in the iframe window object
+          console.log("Received userId:", window.userId);
+        }
+      });
+    </script>
   <meta http-equiv="x-ua-compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,shrink-to-fit=no,minimal-ui"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
